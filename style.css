@@ -1,6 +1,11 @@
 body,
 html {
-	margin: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("./chocolate-cake.jpg");
+    color: white;
 }
 
 html {
