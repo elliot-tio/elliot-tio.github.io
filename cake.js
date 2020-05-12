@@ -34,7 +34,7 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 inputForm.onsubmit = function (event) {
 	event.preventDefault()
 
-    let name = inputTxt.value
+    let name = inputTxt.value;
     const song = `Happy Birthday to you, ${name}, Happy Birthday to you, ${name}, Happy Birthday to you, dear ${name}, Happy Birthday To You`
     const utterThis = new SpeechSynthesisUtterance(song)
 	let selectedOption = voiceSelect.selectedOptions[0].getAttribute(
@@ -48,7 +48,13 @@ inputForm.onsubmit = function (event) {
 	utterThis.pitch = 1
 	utterThis.rate = 1
     synth.speak(utterThis)
-    document.getElementById('video').style.display = "block"
+    document.getElementById('video').classList.remove('hidden');
+    let secretMessage = document.getElementById('secret_message');
+    secretMessage.innerHTML = name ? `Happy Birthday, ${name}!` : "Happy Birthday - wait, you didn't enter a name!";
+    if(name === '') {
+        secretMessage.classList.remove('rainbow');
+    }
+    secretMessage.classList.remove('hidden');
 
 	inputTxt.blur()
 }
